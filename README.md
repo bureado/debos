@@ -45,7 +45,7 @@ https://godoc.org/github.com/go-debos/debos/actions
 
 ## Installation (under Debian)
 
-    sudo apt install golang
+    sudo apt install debootstrap systemd-container golang
     sudo apt install libglib2.0-dev libostree-dev
     export GOPATH=/opt/src/gocode # or whatever suites your needs
     go get -u github.com/go-debos/debos/cmd/debos
