@@ -44,6 +44,7 @@ type DownloadAction struct {
 	Url              string // URL for downloading
 	Filename         string // File name, overrides the name from URL.
 	Unpack           bool   // Unpack downloaded file to directory dedicated for download
+	Install          bool   // Install deb package inside chroot
 	Compression      string // compression type
 	Name             string // exporting path to file or directory(in case of unpack)
 }
@@ -161,6 +162,15 @@ func (d *DownloadAction) Run(context *debos.DebosContext) error {
 		}
 		originPath = targetdir
 	}
+	
+	if d.Install == true {
+		cmd := debos.NewChrootCommandForContext(context)
+		
+		err := cmd.Run("dpkg", "-i", filename)
+		if err != nil {
+			return err
+		}
+	}		
 
 	context.Origins[d.Name] = originPath
 
