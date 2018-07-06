@@ -49,7 +49,7 @@ https://godoc.org/github.com/go-debos/debos/actions
     sudo apt install libglib2.0-dev libostree-dev
     export GOPATH=/opt/src/gocode # or whatever suites your needs
     go get -u github.com/go-debos/debos/cmd/debos
-    /opt/src/gocode/bin/debos --help
+    $GOPATH/bin/debos --help
     
 ## Simple example
 
@@ -83,7 +83,7 @@ make a tarball.
 
 To run it, create a file named `example.yaml` and run:
 
-    debos example.yaml
+    sudo debos example.yaml # sudo not required if fakemachine is available
 
 The final tarball will be named "debian.tgz" if you would like to modify
 this name, you can provided a different name for the variable image like
